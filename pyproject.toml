@@ -3,7 +3,7 @@ name = "pythonproject"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Сергей Мосякин",email = "smosyakin@yandex.ru"}
+    {name = "Sefgey Mosyakin",email = "smosyakin@yandex.ru"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"
