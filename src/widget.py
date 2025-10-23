@@ -1,8 +1,8 @@
 import re
 
 import masks
-# from . import masks
 
+import re
 
 def mask_account_card(card_account_num: str) -> str:
     """Функция маскирующая номер счета или карты"""
@@ -27,9 +27,14 @@ def mask_account_card(card_account_num: str) -> str:
 
 def get_date(full_date: str) -> str:
     """Функция упрощающая вид даты"""
-    part_full_date = full_date[:10]
-    split_date = part_full_date.split("-")
-
-    rev_list_date = split_date[-1:-4:-1]
-    short_date = ".".join(rev_list_date)
-    return short_date
+    if len(full_date) == 0:
+        return "нет данных"
+    elif len(full_date) > 10:
+        part_full_date = full_date[:10]
+        split_date = re.split(":|-|,|/", part_full_date)
+        # split_date = part_full_date.split("-")
+        rev_list_date = split_date[-1:-4:-1]
+        short_date = ".".join(rev_list_date)
+        return short_date
+    else:
+        return "недостаточно данных"
