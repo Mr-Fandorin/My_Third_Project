@@ -15,7 +15,6 @@ def mask_account_card(card_account_num: str) -> str:
     elif re.search("[a-zA-Z]", card_account_num):
         list_card_num = card_account_num.split(' ')
         if len(list_card_num[-1]) == 16:
-        # if card_account_num[-16:].isdigit():
             mask_card_num = masks.get_mask_card_number(int(card_account_num[-17:]))
             return f"{card_account_num[:-17]} {mask_card_num}"
         else:
@@ -34,5 +33,3 @@ def get_date(full_date: str) -> str:
     rev_list_date = split_date[-1:-4:-1]
     short_date = ".".join(rev_list_date)
     return short_date
-
-print(mask_account_card('MasterCard 7158300734726758000'))
