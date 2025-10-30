@@ -6,3 +6,10 @@ def filter_by_currency(transactions, currency):
         i += 1
 
 
+def transaction_descriptions(transactions):
+    i = 0
+    while True:
+        yield transactions[i]["description"]
+        i += 1
+
+
