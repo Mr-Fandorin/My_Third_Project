@@ -1,7 +1,7 @@
 from typing import Union
 
 
-def filter_by_state(list_of_user_dates: list[dict], state="EXECUTED") -> Union[str, list[dict]]:
+def filter_by_state(list_of_user_dates: list[dict], state: str = "EXECUTED") -> Union[str, list[dict]]:
     """Функция, фильтрующая словари по нужному ключу"""
     new_list_of_users = []
     for item in list_of_user_dates:
