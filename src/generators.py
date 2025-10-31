@@ -2,6 +2,7 @@ from typing import Union
 
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Union[str, list[dict]]:
+    "Генератор функции сортировки базы данных по заданной валюте"
     filtered_people = list(filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions))
     if not filtered_people:
         yield "Нет данных"
@@ -13,6 +14,7 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Union[str, li
 
 
 def transaction_descriptions(transactions: list[dict]) -> Union[str, list[dict]]:
+    "Генератор функции вывода описаний транзакций"
     if not transactions:
         yield "Нет данных"
     else:
@@ -23,6 +25,7 @@ def transaction_descriptions(transactions: list[dict]) -> Union[str, list[dict]]
 
 
 def card_number_generator(a: int, b: int) -> str:
+    "Генератор функции генерирования номеров карт в заданном диапазоне"
     x = a
     while x <= b:
         str_card_num = "0000000000000000"
