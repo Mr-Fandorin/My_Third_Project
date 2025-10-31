@@ -1,4 +1,7 @@
-def filter_by_currency(transactions, currency):
+from typing import Union
+
+
+def filter_by_currency(transactions: list[dict], currency: str) -> Union[str, list[dict]]:
     filtered_people = list(filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions))
     if not filtered_people:
         yield "Нет данных"
@@ -9,8 +12,7 @@ def filter_by_currency(transactions, currency):
             i += 1
 
 
-
-def transaction_descriptions(transactions):
+def transaction_descriptions(transactions: list[dict]) -> Union[str, list[dict]]:
     if not transactions:
         yield "Нет данных"
     else:
@@ -20,7 +22,7 @@ def transaction_descriptions(transactions):
             i += 1
 
 
-def card_number_generator(a, b):
+def card_number_generator(a: int, b: int) -> str:
     x = a
     while x <= b:
         str_card_num = "0000000000000000"
@@ -28,7 +30,7 @@ def card_number_generator(a, b):
         if lenght_num > 16:
             yield "неверный номер карты"
         else:
-            new_num = str_card_num[:16 - lenght_num]
+            new_num = str_card_num[: 16 - lenght_num]
             full_num = new_num + str(x)
             yield f"{full_num[:4]} {full_num[4:8]} {full_num[8:12]} {full_num[12:]}"
             x += 1
