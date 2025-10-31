@@ -45,3 +45,7 @@ def transactions():
             "to": "Счет 74489636417521191160"
         }
     ]
+
+@pytest.fixture
+def dates():
+    return []
