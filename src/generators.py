@@ -1,7 +1,7 @@
-from typing import Union
+from typing import Iterator
 
 
-def filter_by_currency(transactions: list[dict], currency: str) -> Union[str, list[dict]]:
+def filter_by_currency(transactions: list[dict], currency: str) -> Iterator:
     "Генератор функции сортировки базы данных по заданной валюте"
     filtered_people = list(filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions))
     if not filtered_people:
@@ -9,31 +9,37 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Union[str, li
     else:
         i = 0
         while True:
-            yield filtered_people[i]
-            i += 1
+            if len(filtered_people) >= i:
+                yield filtered_people[i]
+                i += 1
+            else:
+                break
 
 
-def transaction_descriptions(transactions: list[dict]) -> Union[str, list[dict]]:
+def transaction_descriptions(transactions: list[dict]) -> Iterator:
     "Генератор функции вывода описаний транзакций"
     if not transactions:
         yield "Нет данных"
     else:
         i = 0
         while True:
-            yield transactions[i]["description"]
-            i += 1
+            if len(transactions) >= i:
+                yield transactions[i]["description"]
+                i += 1
+            else:
+                break
 
 
-def card_number_generator(a: int, b: int) -> str:
+def card_number_generator(a: int, b: int) -> Iterator:
     "Генератор функции генерирования номеров карт в заданном диапазоне"
     x = a
     while x <= b:
         str_card_num = "0000000000000000"
         lenght_num = len(str(x))
-        if lenght_num > 16:
-            yield "неверный номер карты"
-        else:
+        if lenght_num <= 16:
             new_num = str_card_num[: 16 - lenght_num]
             full_num = new_num + str(x)
             yield f"{full_num[:4]} {full_num[4:8]} {full_num[8:12]} {full_num[12:]}"
             x += 1
+        else:
+            yield "неверный номер карты"
