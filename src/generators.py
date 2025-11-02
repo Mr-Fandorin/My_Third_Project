@@ -1,5 +1,4 @@
-from typing import Iterator
-from typing import Union
+from typing import Iterator, Union
 
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[Union[dict, str]]:
