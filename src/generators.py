@@ -32,9 +32,7 @@ def transaction_descriptions(transactions: list[dict]) -> Iterator:
 
 def card_number_generator(start: int, stop: int) -> Iterator:
     "Генератор функции генерирования номеров карт в заданном диапазоне"
-    x = start
-    while x <= stop:
-        str_card_num = "0000000000000000"
+    for x in range(start, stop + 1):
         lenght_num = len(str(x))
         if lenght_num <= 16:
             str_card_num = f"{x:016d}"
