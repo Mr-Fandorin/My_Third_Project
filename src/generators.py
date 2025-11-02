@@ -30,10 +30,10 @@ def transaction_descriptions(transactions: list[dict]) -> Iterator:
                 break
 
 
-def card_number_generator(a: int, b: int) -> Iterator:
+def card_number_generator(start: int, stop: int) -> Iterator:
     "Генератор функции генерирования номеров карт в заданном диапазоне"
-    x = a
-    while x <= b:
+    x = start
+    while x <= stop:
         str_card_num = "0000000000000000"
         lenght_num = len(str(x))
         if lenght_num <= 16:

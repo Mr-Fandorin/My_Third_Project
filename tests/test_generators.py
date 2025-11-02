@@ -1,7 +1,6 @@
 import pytest
 
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
-from tests.conftest import transactions
 
 
 @pytest.mark.parametrize(
@@ -48,7 +47,7 @@ def test_transaction_descriptions(transactions):
         assert generated == expected
 
 
-def test_transaction_descriptions(dates):
+def test_transaction_descriptions_2(dates):
     expected_descriptions = "Нет данных"
 
     generator = transaction_descriptions(dates)
@@ -64,7 +63,7 @@ def test_card_number_generator():
     assert next(generator) == "0000 0000 0000 0005"
 
 
-def test_card_number_generator():
+def test_card_number_generator_2():
     generator = card_number_generator(9999999999999996, 9999999999999999)
     assert next(generator) == "9999 9999 9999 9996"
     assert next(generator) == "9999 9999 9999 9997"
@@ -72,7 +71,7 @@ def test_card_number_generator():
     assert next(generator) == "9999 9999 9999 9999"
 
 
-def test_card_number_generator():
+def test_card_number_generator_3():
     generator = card_number_generator(9999999999999999, 10000000000000000)
     assert next(generator) == "9999 9999 9999 9999"
     assert next(generator) == "неверный номер карты"
