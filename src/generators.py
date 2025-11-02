@@ -37,9 +37,8 @@ def card_number_generator(a: int, b: int) -> Iterator:
         str_card_num = "0000000000000000"
         lenght_num = len(str(x))
         if lenght_num <= 16:
-            new_num = str_card_num[: 16 - lenght_num]
-            full_num = new_num + str(x)
-            yield f"{full_num[:4]} {full_num[4:8]} {full_num[8:12]} {full_num[12:]}"
+            str_card_num = f"{x:016d}"
+            yield f"{str_card_num[:4]} {str_card_num[4:8]} {str_card_num[8:12]} {str_card_num[12:]}"
             x += 1
         else:
             yield "неверный номер карты"
