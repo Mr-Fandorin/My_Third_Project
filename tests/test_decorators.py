@@ -1,6 +1,5 @@
-import pytest
-
 from src.decorators import log
+
 
 def test_log():
     @log(filename="mylog.txt")
@@ -11,9 +10,7 @@ def test_log():
     with open("mylog.txt", "r") as file:
         log_content = file.read()
 
-    assert 'my_function ok' in log_content
-
-
+    assert "my_function ok" in log_content
 
 
 def test_log_2(capsys):
@@ -21,9 +18,9 @@ def test_log_2(capsys):
     def my_function(x, y):
         return x + y
 
-    result = my_function(1, 2)
+    my_function(1, 2)
     captured = capsys.readouterr()
-    assert 'my_function ok' in captured.out
+    assert "my_function ok" in captured.out
 
 
 def test_log_3(capsys):
@@ -31,7 +28,6 @@ def test_log_3(capsys):
     def my_function(x, y):
         return x + y
 
-    result = my_function(1, 'a')
+    my_function(1, "a")
     captured = capsys.readouterr()
-    assert 'my_function error' in captured.out
-
+    assert "my_function error" in captured.out
