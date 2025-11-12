@@ -7,23 +7,9 @@ import requests
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
-data = {
-    "id": 41428829,
-    "state": "EXECUTED",
-    "date": "2019-07-03T18:35:29.512364",
-    "operationAmount": {
-      "amount": "8221.37",
-      "currency": {
-        "name": "USD",
-        "code": "USD"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "MasterCard 7158300734726758",
-    "to": "Счет 35383033474447895560"
-  }
 
 def exchange_amount(transaction):
+    """Функция, которая производит конвертацию суммы транзакции в рубли"""
     amount = float(transaction["operationAmount"]["amount"])
     from_currency = transaction["operationAmount"]["currency"]["code"]
     to = "RUB"
@@ -42,11 +28,13 @@ def exchange_amount(transaction):
         }
 
         response = requests.request("GET", url, headers=headers, params=payload)
-
+        if response.status_code != 200:
+            raise ValueError(f"Failed to get currency rate")
         status_code = response.status_code
         result = response.json()['result']
-
+        if not from_currency:
+            raise ValueError(f"No data for currency {from_currency}")
         return result
 
-print(exchange_amount(data))
+
 
