@@ -12,13 +12,13 @@ def test_operations_data(mock_file):
     mock_file.assert_called_once_with('..data/operations.json', encoding='utf-8')
 
 @patch('builtins.open', new_callable=mock_open, read_data='{"key": "value"}')
-def test_operations_data(mock_file):
+def test_operations_data_2(mock_file):
     assert operations_data('..data/operations.json') == []
     mock_file.assert_called_once_with('..data/operations.json', encoding='utf-8')
 
 
 @patch('builtins.open', new_callable=mock_open, read_data='')
-def test_operations_data(mock_file):
+def test_operations_data_3(mock_file):
     assert operations_data('..data/operations.json') == []
     mock_file.assert_called_once_with('..data/operations.json', encoding='utf-8')
 
