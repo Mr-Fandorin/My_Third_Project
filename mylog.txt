@@ -11,3 +11,4 @@ my_function ok, start func: 1762462457.0693588, end func: 1762462457.0693624
 my_function ok, start func: 1762975659.10616, end func: 1762975659.1061604
 my_function ok, start func: 1762975804.0608983, end func: 1762975804.0609002
 my_function ok, start func: 1762976565.440899, end func: 1762976565.440901
+my_function ok, start func: 1762977960.2946846, end func: 1762977960.2946851
