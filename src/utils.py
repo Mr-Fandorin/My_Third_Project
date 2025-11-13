@@ -7,10 +7,12 @@ def operations_data(route=None) -> list:
         return []
     else:
         with open(route, encoding="utf-8") as f:
-            content = f.read()
-            if not content:
-                return []
-            data = json.loads(content)
-            if type(data) is not list:
+            try:
+                content = f.read()
+                try:
+                    data = json.loads(content)
+                except json.JSONDecodeError:
+                    return []
+            except FileNotFoundError:
                 return []
             return data
