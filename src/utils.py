@@ -9,7 +9,7 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
 
-def operations_data(route=None) -> list:
+def operations_data(route=None) -> list[dict]:
     """Функция, которая загружает информацию из файла json и выводит список словарей с данными"""
     if route is None:
         logger.info("Нет адреса файла")

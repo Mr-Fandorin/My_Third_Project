@@ -24,7 +24,7 @@ def exchange_amount(transaction: dict) -> Union[float, str]:
         response = requests.request("GET", url, headers=headers, params=payload)
         if response.status_code != 200:
             raise ValueError("Failed to get currency rate")
-        status_code = response.status_code
+        # status_code = response.status_code
         result = response.json()["result"]
         if not from_currency:
             raise ValueError(f"No data for currency {from_currency}")
