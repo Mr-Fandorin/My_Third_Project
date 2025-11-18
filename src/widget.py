@@ -31,7 +31,6 @@ def get_date(full_date: str) -> str:
     elif len(full_date) > 10:
         part_full_date = full_date[:10]
         split_date = re.split(":|-|,|/", part_full_date)
-        # split_date = part_full_date.split("-")
         rev_list_date = split_date[-1:-4:-1]
         short_date = ".".join(rev_list_date)
         return short_date

@@ -1,6 +1,10 @@
+import os
+
 import pytest
 
 from src.masks import get_mask_account, get_mask_card_number
+
+print("Current working directory:", os.getcwd())
 
 
 @pytest.mark.parametrize(

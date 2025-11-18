@@ -25,5 +25,5 @@ def test_operations_data_3(mock_file):
 
 
 @pytest.mark.parametrize("value, expected", [(None, [])])
-def test_operations_data_2(value, expected):
+def test_operations_data_4(value, expected):
     assert operations_data(value) == expected
