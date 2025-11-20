@@ -16,7 +16,6 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[Unio
                 break
 
 
-
 def transaction_descriptions(transactions: list[dict]) -> Iterator[str]:
     "Генератор функции вывода описаний транзакций"
     if not transactions:
