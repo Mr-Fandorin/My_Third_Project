@@ -13,9 +13,9 @@ from src.generators import card_number_generator, filter_by_currency, transactio
                 "description": "Перевод организации",
                 "from": "Счет 75106830613657916952",
                 "id": 939719570,
-                "operationAmount": {"amount": "9824.07", "currency": {"code": "USD", "name": "USD"}},
+                "amount": "9824.07", "currency_code": "USD", "currency_name": "USD",
                 "state": "EXECUTED",
-                "to": "Счет 11776614605963066702",
+                "to": "Счет 11776614605963066702"
             },
         ),
         (
@@ -25,9 +25,9 @@ from src.generators import card_number_generator, filter_by_currency, transactio
                 "description": "Перевод со счета на счет",
                 "from": "Счет 44812258784861134719",
                 "id": 873106923,
-                "operationAmount": {"amount": "43318.34", "currency": {"code": "RUB", "name": "руб."}},
+                "amount": "43318.34", "currency_code": "RUB", "currency_name": "руб.",
                 "state": "EXECUTED",
-                "to": "Счет 74489636417521191160",
+                "to": "Счет 74489636417521191160"
             },
         ),
         ("EURO", "Нет данных"),

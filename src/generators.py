@@ -3,17 +3,18 @@ from typing import Iterator, Union
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[Union[dict, str]]:
     "Генератор функции сортировки базы данных по заданной валюте"
-    filtered_people = list(filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions))
+    filtered_people = list(filter(lambda x: x["currency_code"] == currency, transactions))
     if not filtered_people:
         yield "Нет данных"
     else:
         i = 0
         while True:
-            if len(filtered_people) >= i:
+            if len(filtered_people) > i:
                 yield filtered_people[i]
                 i += 1
             else:
                 break
+
 
 
 def transaction_descriptions(transactions: list[dict]) -> Iterator[str]:
