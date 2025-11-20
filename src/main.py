@@ -16,9 +16,11 @@ def main():
     )
     num_menu = int(input())
     if num_menu == 1:
+        """Если пользователь выбрал обработку файла JSON"""
         print("Для обработки выбран JSON-файл.\n")
         list_transactions = operations_data("../data/operations.json")
         for item in list_transactions:
+            """Приводим данные из файла JSON в общий формат"""
             try:
                 item["amount"] = item["operationAmount"]["amount"]
                 item["currency_name"] = item["operationAmount"]["currency"]["name"]
@@ -28,9 +30,11 @@ def main():
                 continue
 
     elif num_menu == 2:
+        """Если пользователь выбрал обработку файла CSV"""
         print("Для обработки выбран CSV-файл.\n")
         list_transactions = reader_csv_transactions("../data/transactions.csv")
     elif num_menu == 3:
+        """Если пользователь выбрал обработку файла Excel"""
         print("Для обработки выбран XLSX-файл.\n")
         list_transactions = reader_excel_transaction("../data/transactions_excel.xlsx")
 
@@ -41,6 +45,7 @@ def main():
         )
         name_operation = input().upper()
         if name_operation == "EXECUTED":
+            """Если пользователь выбрал сортировку по 'EXECUTED'"""
             print('Операции отфильтрованы по статусу "EXECUTED"\n')
             filter_list = filter_by_state(list_transactions)
             if filter_list == "нет данных":
@@ -48,6 +53,7 @@ def main():
             else:
                 break
         elif name_operation == "CANCELED":
+            """Если пользователь выбрал сортировку по 'CANCELED'"""
             print('Операции отфильтрованы по статусу "CANCELED"\n')
             filter_list = filter_by_state(list_transactions, "CANCELED")
             if filter_list == "нет данных":
@@ -55,6 +61,7 @@ def main():
             else:
                 break
         elif name_operation == "PENDING":
+            """Если пользователь выбрал сортировку по 'PENDING'"""
             print('Операции отфильтрованы по статусу "PENDING"\n')
             filter_list = filter_by_state(list_transactions, "PENDING")
             if filter_list == "нет данных":
@@ -68,16 +75,20 @@ def main():
     print("Отсортировать операции по дате? Да/Нет")
     sort_date = input().lower()
     if sort_date == "да":
+        """Если пользователь выбрал сортировку по дате"""
         print("Отсортировать по возрастанию или по убыванию?")
         sort_up_down = input().lower()
         if sort_up_down == "по возрастанию":
+            """Если пользователь выбрал сортировку по возрастанию"""
             filter_list = sort_by_date(filter_list, False)
         elif sort_up_down == "по убыванию":
+            """Если пользователь выбрал сортировку по убыванию"""
             filter_list = sort_by_date(filter_list)
 
     print("Выводить только рублевые транзакции? Да/Нет")
     sort_currency = input().lower()
     if sort_currency == "да":
+        """Если пользователь выбрал вывод операций только в рублях"""
         result_list = []
         test_list = filter_by_currency(filter_list, "RUB")
         for item in test_list:
@@ -87,6 +98,7 @@ def main():
     print("Отфильтровать список транзакций по определенному слову в описании? Да/Нет")
     user_answer = input().lower()
     if user_answer == "да":
+        """Если пользователь выбрал сортировку по ключевому слову в описании"""
         print("Введите слово в описании")
         sort_by_word = input().lower()
         filter_list = process_bank_search(filter_list, sort_by_word)
@@ -97,6 +109,7 @@ def main():
         return "Не найдено ни одной транзакции, подходящей под ваши условия фильтрации"
     else:
         for item in filter_list:
+            """Выводим результат"""
             date_of_transction = get_date(item["date"])
             category_of_transaction = item["description"]
             transfer_to = mask_account_card(item["to"])
